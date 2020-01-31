@@ -14,7 +14,9 @@ routes.post('/sessions', SessionController.store);
 routes
   .route('/users')
   .post(UserController.store)
-  .get(UserController.index)
-  .put(authMiddleware, UserController.update);
+  .put(authMiddleware, UserController.update)
+  .get(authMiddleware, UserController.index);
+
+routes.route('/users/:id').delete(authMiddleware, UserController.delete);
 
 export default routes;
