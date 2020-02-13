@@ -69,18 +69,10 @@ class UserController {
   }
 
   async index(req, res) {
-    const users = await User.findAll();
-    return res.json(
-      users.map(
-        user =>
-          (user = {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            provider: user.provider,
-          })
-      )
-    );
+    const users = await User.findAll({
+      attributes: ['id', 'name', 'email', 'provider'],
+    });
+    return res.json(users);
   }
 
   async delete(req, res) {
