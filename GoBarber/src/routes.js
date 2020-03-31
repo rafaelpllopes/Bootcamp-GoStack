@@ -7,6 +7,7 @@ import FileController from './app/controllers/FileController';
 import ProviderController from './app/controllers/ProviderController';
 import AppointmentController from './app/controllers/AppointmentController';
 import ScheduleController from './app/controllers/ScheduleController';
+import NotificationController from './app/controllers/NotificationController';
 
 import authMiddleware from './app/middlewares/auth';
 import multerConfig from './config/multer';
@@ -36,6 +37,9 @@ routes.post('/files', upload.single('file'), FileController.store);
 // Route to Appointments
 routes.post('/appointments', AppointmentController.store);
 routes.get('/appointments', AppointmentController.index);
+
+// Route to list events
+routes.get('/notifications', NotificationController.index);
 
 // Route to Shedule
 routes.get('/schedule', ScheduleController.index);
